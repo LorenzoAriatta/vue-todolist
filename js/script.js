@@ -5,23 +5,23 @@ const app = new Vue({
     data: {
 
         toDoList: [{
-            text: 'fare la spesa',
+            text: 'Create a Portfolio site',
             done: false
         },
         {
-            text: 'sala ore 20',
+            text: 'Pay bills',
             done: false
         },
         {
-            text: 'chiamare banca',
+            text: 'JavaScript practice',
             done: false
         },
         {
-            text: 'pagare multa',
+            text: 'Recording Session',
             done: false
         },
         {
-            text: 'giocare a Elden Ring',
+            text: 'Friday 10pm Rehersal Room',
             done: false
         },
         ],
@@ -49,6 +49,12 @@ const app = new Vue({
                 }
                 this.toDoList.push(newObj);
                 this.newTask = '';
+            }
+        },
+        taskIsDone(item) {
+            item.done = true;
+            if (item.done) {
+                this.doneList.push(item);
             }
         }
     }

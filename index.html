@@ -15,9 +15,6 @@
 
 <body>
 
-    <i class="fa-regular fa-square-check"></i>
-
-
     <div id="app">
 
         <div class="container">
@@ -28,21 +25,36 @@
 
             <div class="task-todo-container">
 
+
                 <ul>
-                    <li class="li-item" v-for="(item, index) in toDoList" v-if="item.done === false"
-                        :class="lineDone(item)">
+                    <li @click="taskIsDone(item)" class="li-item" v-for="(item, index) in toDoList"
+                        v-if="item.done === false" :class="lineDone(item)">
                         <i @click="taskDone(item)" class="fa-solid fa-square-xmark"></i> {{ item.text }}
                     </li>
                 </ul>
 
-                <input type="text" placeholder="Add a new Thing To Do!" v-model="newTask">
-                <button @click="addNewTask()" type="submit">Add!</button>
 
             </div>
 
-            <div class="task-complete-container">
+            <div class="add-section">
+
+                <input type="text" placeholder="Add a new Thing To Do!" v-model="newTask" @keyUp.enter="addNewTask()">
+                <button class="button" @click="addNewTask()" type="submit">Add!</button>
+
+            </div>
+
+            <div class="title-done">
+                <h1>TASKS DONE</h1>
+            </div>
+
+            <div class="task-complete-container" v-if="doneList.length > 0">
 
 
+                <ul>
+                    <li v-for="(item, index) in doneList" class="li-item" :class="lineDone(item)">
+                        <i class="fa-regular fa-square-check"></i> {{ item.text }}
+                    </li>
+                </ul>
 
             </div>
 
