@@ -51,7 +51,8 @@
 
 
                 <ul>
-                    <li v-for="(item, index) in doneList" class="li-item" :class="lineDone(item)">
+                    <li @click="changeBoolean(item)" v-for="(item, index) in toDoList" v-if="item.done === true"
+                        class="li-item" :class="lineDone(item)">
                         <i class="fa-regular fa-square-check"></i> {{ item.text }}
                     </li>
                 </ul>
