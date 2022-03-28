@@ -27,7 +27,7 @@ const app = new Vue({
         ],
         doneList: [],
         index: 0,
-        newTask: ''
+        newTask: '',
     },
     methods: {
         taskDone(item) {
@@ -42,8 +42,12 @@ const app = new Vue({
         },
         addNewTask() {
             const newTask = this.newTask.trim();
-            if (this.newTask < 0) {
-                this.toDoList.push(newTask);
+            if (newTask.length > 0) {
+                let newObj = {
+                    text: this.newTask,
+                    done: false
+                }
+                this.toDoList.push(newObj);
                 this.newTask = '';
             }
         }
